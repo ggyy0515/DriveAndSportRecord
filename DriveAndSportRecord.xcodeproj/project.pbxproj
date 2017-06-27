@@ -1,0 +1,649 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A2D67CC1D5888B50079B51C /* DSJourneyRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D67CB1D5888B50079B51C /* DSJourneyRecordModel.m */; };
+		6A2D67CF1D5ACFD20079B51C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67CE1D5ACFD20079B51C /* MapKit.framework */; };
+		6A2D67D11D5AD0390079B51C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67D01D5AD0390079B51C /* CoreLocation.framework */; };
+		6A2D67D31D5AD0480079B51C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67D21D5AD0480079B51C /* CoreMotion.framework */; };
+		6A2D67D51D5AD0530079B51C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67D41D5AD0530079B51C /* AudioToolbox.framework */; };
+		6A2D67D71D5AD0660079B51C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67D61D5AD0660079B51C /* CoreTelephony.framework */; };
+		6A2D67DA1D5AD0B00079B51C /* DSBackgroungTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D67D91D5AD0B00079B51C /* DSBackgroungTask.m */; };
+		6A2D67DD1D5B0B220079B51C /* DSRecordConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D67DC1D5B0B220079B51C /* DSRecordConfig.m */; };
+		6AAAA2201D52D398001984CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA21F1D52D398001984CF /* main.m */; };
+		6AAAA2231D52D398001984CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA2221D52D398001984CF /* AppDelegate.m */; };
+		6AAAA2251D52D398001984CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AAAA2241D52D398001984CF /* Assets.xcassets */; };
+		6AAAA2281D52D398001984CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAAA2261D52D398001984CF /* LaunchScreen.storyboard */; };
+		6AAAA2331D52D398001984CF /* DriveAndSportRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA2321D52D398001984CF /* DriveAndSportRecordTests.m */; };
+		6AAAA23E1D52D398001984CF /* DriveAndSportRecordUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA23D1D52D398001984CF /* DriveAndSportRecordUITests.m */; };
+		6AAAA24D1D52D581001984CF /* DSDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA24C1D52D581001984CF /* DSDatabaseService.m */; };
+		6AAAA2531D532207001984CF /* DSJourneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA2521D532207001984CF /* DSJourneyModel.m */; };
+		7CC7715A9F1ECA505B5B921E /* libPods-DriveAndSportRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4275650D9D035A1D455D29B5 /* libPods-DriveAndSportRecord.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6AAAA22F1D52D398001984CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AAAA2131D52D398001984CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AAAA21A1D52D398001984CF;
+			remoteInfo = DriveAndSportRecord;
+		};
+		6AAAA23A1D52D398001984CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AAAA2131D52D398001984CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AAAA21A1D52D398001984CF;
+			remoteInfo = DriveAndSportRecord;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2326E163A3931B423FC99FAA /* Pods-DriveAndSportRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriveAndSportRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DriveAndSportRecord/Pods-DriveAndSportRecord.debug.xcconfig"; sourceTree = "<group>"; };
+		4275650D9D035A1D455D29B5 /* libPods-DriveAndSportRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DriveAndSportRecord.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E1089B4C79BD591E55EE853 /* Pods-DriveAndSportRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriveAndSportRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-DriveAndSportRecord/Pods-DriveAndSportRecord.release.xcconfig"; sourceTree = "<group>"; };
+		6A2D67CA1D5888B50079B51C /* DSJourneyRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJourneyRecordModel.h; sourceTree = "<group>"; };
+		6A2D67CB1D5888B50079B51C /* DSJourneyRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJourneyRecordModel.m; sourceTree = "<group>"; };
+		6A2D67CD1D588C000079B51C /* DSDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDefines.h; sourceTree = "<group>"; };
+		6A2D67CE1D5ACFD20079B51C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6A2D67D01D5AD0390079B51C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6A2D67D21D5AD0480079B51C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		6A2D67D41D5AD0530079B51C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6A2D67D61D5AD0660079B51C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		6A2D67D81D5AD0B00079B51C /* DSBackgroungTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSBackgroungTask.h; sourceTree = "<group>"; };
+		6A2D67D91D5AD0B00079B51C /* DSBackgroungTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSBackgroungTask.m; sourceTree = "<group>"; };
+		6A2D67DB1D5B0B220079B51C /* DSRecordConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSRecordConfig.h; sourceTree = "<group>"; };
+		6A2D67DC1D5B0B220079B51C /* DSRecordConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSRecordConfig.m; sourceTree = "<group>"; };
+		6AAAA21B1D52D398001984CF /* DriveAndSportRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriveAndSportRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AAAA21F1D52D398001984CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6AAAA2211D52D398001984CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6AAAA2221D52D398001984CF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6AAAA2241D52D398001984CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AAAA2271D52D398001984CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6AAAA2291D52D398001984CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AAAA22E1D52D398001984CF /* DriveAndSportRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DriveAndSportRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AAAA2321D52D398001984CF /* DriveAndSportRecordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DriveAndSportRecordTests.m; sourceTree = "<group>"; };
+		6AAAA2341D52D398001984CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AAAA2391D52D398001984CF /* DriveAndSportRecordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DriveAndSportRecordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AAAA23D1D52D398001984CF /* DriveAndSportRecordUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DriveAndSportRecordUITests.m; sourceTree = "<group>"; };
+		6AAAA23F1D52D398001984CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AAAA24B1D52D581001984CF /* DSDatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDatabaseService.h; sourceTree = "<group>"; };
+		6AAAA24C1D52D581001984CF /* DSDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDatabaseService.m; sourceTree = "<group>"; };
+		6AAAA2511D532207001984CF /* DSJourneyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJourneyModel.h; sourceTree = "<group>"; };
+		6AAAA2521D532207001984CF /* DSJourneyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJourneyModel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6AAAA2181D52D398001984CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A2D67D71D5AD0660079B51C /* CoreTelephony.framework in Frameworks */,
+				6A2D67D51D5AD0530079B51C /* AudioToolbox.framework in Frameworks */,
+				6A2D67D31D5AD0480079B51C /* CoreMotion.framework in Frameworks */,
+				6A2D67D11D5AD0390079B51C /* CoreLocation.framework in Frameworks */,
+				6A2D67CF1D5ACFD20079B51C /* MapKit.framework in Frameworks */,
+				7CC7715A9F1ECA505B5B921E /* libPods-DriveAndSportRecord.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AAAA22B1D52D398001984CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AAAA2361D52D398001984CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FC25C6740C661545BB843A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2326E163A3931B423FC99FAA /* Pods-DriveAndSportRecord.debug.xcconfig */,
+				5E1089B4C79BD591E55EE853 /* Pods-DriveAndSportRecord.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6AAAA2121D52D398001984CF = {
+			isa = PBXGroup;
+			children = (
+				6AAAA21D1D52D398001984CF /* DriveAndSportRecord */,
+				6AAAA2311D52D398001984CF /* DriveAndSportRecordTests */,
+				6AAAA23C1D52D398001984CF /* DriveAndSportRecordUITests */,
+				6AAAA21C1D52D398001984CF /* Products */,
+				5FC25C6740C661545BB843A4 /* Pods */,
+				E894D4832E62B6AAFD47524B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6AAAA21C1D52D398001984CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AAAA21B1D52D398001984CF /* DriveAndSportRecord.app */,
+				6AAAA22E1D52D398001984CF /* DriveAndSportRecordTests.xctest */,
+				6AAAA2391D52D398001984CF /* DriveAndSportRecordUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AAAA21D1D52D398001984CF /* DriveAndSportRecord */ = {
+			isa = PBXGroup;
+			children = (
+				6AAAA2211D52D398001984CF /* AppDelegate.h */,
+				6AAAA2221D52D398001984CF /* AppDelegate.m */,
+				6A2D67CD1D588C000079B51C /* DSDefines.h */,
+				6A2D67D81D5AD0B00079B51C /* DSBackgroungTask.h */,
+				6A2D67D91D5AD0B00079B51C /* DSBackgroungTask.m */,
+				6A2D67DB1D5B0B220079B51C /* DSRecordConfig.h */,
+				6A2D67DC1D5B0B220079B51C /* DSRecordConfig.m */,
+				6AAAA24B1D52D581001984CF /* DSDatabaseService.h */,
+				6AAAA24C1D52D581001984CF /* DSDatabaseService.m */,
+				6AAAA2511D532207001984CF /* DSJourneyModel.h */,
+				6AAAA2521D532207001984CF /* DSJourneyModel.m */,
+				6A2D67CA1D5888B50079B51C /* DSJourneyRecordModel.h */,
+				6A2D67CB1D5888B50079B51C /* DSJourneyRecordModel.m */,
+				6AAAA2241D52D398001984CF /* Assets.xcassets */,
+				6AAAA2261D52D398001984CF /* LaunchScreen.storyboard */,
+				6AAAA2291D52D398001984CF /* Info.plist */,
+				6AAAA21E1D52D398001984CF /* Supporting Files */,
+			);
+			path = DriveAndSportRecord;
+			sourceTree = "<group>";
+		};
+		6AAAA21E1D52D398001984CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6AAAA21F1D52D398001984CF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6AAAA2311D52D398001984CF /* DriveAndSportRecordTests */ = {
+			isa = PBXGroup;
+			children = (
+				6AAAA2321D52D398001984CF /* DriveAndSportRecordTests.m */,
+				6AAAA2341D52D398001984CF /* Info.plist */,
+			);
+			path = DriveAndSportRecordTests;
+			sourceTree = "<group>";
+		};
+		6AAAA23C1D52D398001984CF /* DriveAndSportRecordUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6AAAA23D1D52D398001984CF /* DriveAndSportRecordUITests.m */,
+				6AAAA23F1D52D398001984CF /* Info.plist */,
+			);
+			path = DriveAndSportRecordUITests;
+			sourceTree = "<group>";
+		};
+		E894D4832E62B6AAFD47524B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A2D67D61D5AD0660079B51C /* CoreTelephony.framework */,
+				6A2D67D41D5AD0530079B51C /* AudioToolbox.framework */,
+				6A2D67D21D5AD0480079B51C /* CoreMotion.framework */,
+				6A2D67D01D5AD0390079B51C /* CoreLocation.framework */,
+				6A2D67CE1D5ACFD20079B51C /* MapKit.framework */,
+				4275650D9D035A1D455D29B5 /* libPods-DriveAndSportRecord.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6AAAA21A1D52D398001984CF /* DriveAndSportRecord */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AAAA2421D52D398001984CF /* Build configuration list for PBXNativeTarget "DriveAndSportRecord" */;
+			buildPhases = (
+				748DB8EB40054C0D9805B62D /* [CP] Check Pods Manifest.lock */,
+				6AAAA2171D52D398001984CF /* Sources */,
+				6AAAA2181D52D398001984CF /* Frameworks */,
+				6AAAA2191D52D398001984CF /* Resources */,
+				4D1FB524030C0FBD5C0461E0 /* [CP] Embed Pods Frameworks */,
+				C0F7CA08BFEA789DD9DD3421 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DriveAndSportRecord;
+			productName = DriveAndSportRecord;
+			productReference = 6AAAA21B1D52D398001984CF /* DriveAndSportRecord.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6AAAA22D1D52D398001984CF /* DriveAndSportRecordTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AAAA2451D52D398001984CF /* Build configuration list for PBXNativeTarget "DriveAndSportRecordTests" */;
+			buildPhases = (
+				6AAAA22A1D52D398001984CF /* Sources */,
+				6AAAA22B1D52D398001984CF /* Frameworks */,
+				6AAAA22C1D52D398001984CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AAAA2301D52D398001984CF /* PBXTargetDependency */,
+			);
+			name = DriveAndSportRecordTests;
+			productName = DriveAndSportRecordTests;
+			productReference = 6AAAA22E1D52D398001984CF /* DriveAndSportRecordTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6AAAA2381D52D398001984CF /* DriveAndSportRecordUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AAAA2481D52D398001984CF /* Build configuration list for PBXNativeTarget "DriveAndSportRecordUITests" */;
+			buildPhases = (
+				6AAAA2351D52D398001984CF /* Sources */,
+				6AAAA2361D52D398001984CF /* Frameworks */,
+				6AAAA2371D52D398001984CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AAAA23B1D52D398001984CF /* PBXTargetDependency */,
+			);
+			name = DriveAndSportRecordUITests;
+			productName = DriveAndSportRecordUITests;
+			productReference = 6AAAA2391D52D398001984CF /* DriveAndSportRecordUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6AAAA2131D52D398001984CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Tristan;
+				TargetAttributes = {
+					6AAAA21A1D52D398001984CF = {
+						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					6AAAA22D1D52D398001984CF = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 6AAAA21A1D52D398001984CF;
+					};
+					6AAAA2381D52D398001984CF = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 6AAAA21A1D52D398001984CF;
+					};
+				};
+			};
+			buildConfigurationList = 6AAAA2161D52D398001984CF /* Build configuration list for PBXProject "DriveAndSportRecord" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6AAAA2121D52D398001984CF;
+			productRefGroup = 6AAAA21C1D52D398001984CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AAAA21A1D52D398001984CF /* DriveAndSportRecord */,
+				6AAAA22D1D52D398001984CF /* DriveAndSportRecordTests */,
+				6AAAA2381D52D398001984CF /* DriveAndSportRecordUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6AAAA2191D52D398001984CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AAAA2251D52D398001984CF /* Assets.xcassets in Resources */,
+				6AAAA2281D52D398001984CF /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AAAA22C1D52D398001984CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AAAA2371D52D398001984CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D1FB524030C0FBD5C0461E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DriveAndSportRecord/Pods-DriveAndSportRecord-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		748DB8EB40054C0D9805B62D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0F7CA08BFEA789DD9DD3421 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DriveAndSportRecord/Pods-DriveAndSportRecord-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6AAAA2171D52D398001984CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A2D67DA1D5AD0B00079B51C /* DSBackgroungTask.m in Sources */,
+				6AAAA2231D52D398001984CF /* AppDelegate.m in Sources */,
+				6AAAA24D1D52D581001984CF /* DSDatabaseService.m in Sources */,
+				6AAAA2201D52D398001984CF /* main.m in Sources */,
+				6A2D67DD1D5B0B220079B51C /* DSRecordConfig.m in Sources */,
+				6A2D67CC1D5888B50079B51C /* DSJourneyRecordModel.m in Sources */,
+				6AAAA2531D532207001984CF /* DSJourneyModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AAAA22A1D52D398001984CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AAAA2331D52D398001984CF /* DriveAndSportRecordTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AAAA2351D52D398001984CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AAAA23E1D52D398001984CF /* DriveAndSportRecordUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AAAA2301D52D398001984CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AAAA21A1D52D398001984CF /* DriveAndSportRecord */;
+			targetProxy = 6AAAA22F1D52D398001984CF /* PBXContainerItemProxy */;
+		};
+		6AAAA23B1D52D398001984CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AAAA21A1D52D398001984CF /* DriveAndSportRecord */;
+			targetProxy = 6AAAA23A1D52D398001984CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6AAAA2261D52D398001984CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AAAA2271D52D398001984CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6AAAA2401D52D398001984CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6AAAA2411D52D398001984CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6AAAA2431D52D398001984CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2326E163A3931B423FC99FAA /* Pods-DriveAndSportRecord.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shuai Zhang (L9VWZ7LN7Q)";
+				INFOPLIST_FILE = DriveAndSportRecord/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.DriveAndSportRecord;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8c1c951c-efb4-40b8-8df1-fd49f4a19b9d";
+			};
+			name = Debug;
+		};
+		6AAAA2441D52D398001984CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E1089B4C79BD591E55EE853 /* Pods-DriveAndSportRecord.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shuai Zhang (L9VWZ7LN7Q)";
+				INFOPLIST_FILE = DriveAndSportRecord/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.DriveAndSportRecord;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8c1c951c-efb4-40b8-8df1-fd49f4a19b9d";
+			};
+			name = Release;
+		};
+		6AAAA2461D52D398001984CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DriveAndSportRecordTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.DriveAndSportRecordTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DriveAndSportRecord.app/DriveAndSportRecord";
+			};
+			name = Debug;
+		};
+		6AAAA2471D52D398001984CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DriveAndSportRecordTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.DriveAndSportRecordTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DriveAndSportRecord.app/DriveAndSportRecord";
+			};
+			name = Release;
+		};
+		6AAAA2491D52D398001984CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DriveAndSportRecordUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.DriveAndSportRecordUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DriveAndSportRecord;
+			};
+			name = Debug;
+		};
+		6AAAA24A1D52D398001984CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DriveAndSportRecordUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.DriveAndSportRecordUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DriveAndSportRecord;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6AAAA2161D52D398001984CF /* Build configuration list for PBXProject "DriveAndSportRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AAAA2401D52D398001984CF /* Debug */,
+				6AAAA2411D52D398001984CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AAAA2421D52D398001984CF /* Build configuration list for PBXNativeTarget "DriveAndSportRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AAAA2431D52D398001984CF /* Debug */,
+				6AAAA2441D52D398001984CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AAAA2451D52D398001984CF /* Build configuration list for PBXNativeTarget "DriveAndSportRecordTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AAAA2461D52D398001984CF /* Debug */,
+				6AAAA2471D52D398001984CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AAAA2481D52D398001984CF /* Build configuration list for PBXNativeTarget "DriveAndSportRecordUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AAAA2491D52D398001984CF /* Debug */,
+				6AAAA24A1D52D398001984CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6AAAA2131D52D398001984CF /* Project object */;
+}
