@@ -12,7 +12,6 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <CoreTelephony/CTCallCenter.h>
 #import <CoreTelephony/CTCall.h>
-#include <mach/mach.h>
 
 #import "DSBackgroungTask.h"
 #import "DSRecordConfig.h"
