@@ -13,6 +13,8 @@
 
 #import "ECLogServer.h"
 #import "DSGlobals.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 #endif
 

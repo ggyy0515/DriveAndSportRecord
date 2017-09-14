@@ -81,6 +81,7 @@
         
         _locationManager = [[CLLocationManager alloc] init];
         _motionManager = [[CMMotionManager alloc] init];
+        _journeyRecord = [[DSJourneyRecordModel alloc] init];
         _pedometer = 0;
         _eventArray = [NSMutableArray array];
         _recordArray = [NSMutableArray array];
@@ -140,25 +141,35 @@
     } else {
         _lowEnergy = NO;
     }
-    NSLog(@"开启全部服务");
+    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                      type:type_info
+                                                      text:@"开启全部服务"];
     if ([CLLocationManager locationServicesEnabled]) {
         //开启加速器
         if ([CMMotionActivityManager isActivityAvailable]) {
-            NSLog(@"程序启动，手机支持M7，开启M7服务");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"程序启动，手机支持M7，开启M7服务"];
             [self startCMStepServer];
         } else {
             [self startAccelerometerServer:AccelerometerType_Custom];
         }
         //开启定位
-        NSLog(@"程序启动，开启后台定位服务");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"程序启动，开启后台定位服务"];
         [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
     } else {
-        NSLog(@"程序启动，但定位服务不可用");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"程序启动，但定位服务不可用"];
     }
 }
 
 - (void)stopAllServer {
-    NSLog(@"关闭全部服务");
+    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                      type:type_info
+                                                      text:@"关闭全部服务"];
     //关闭定位服务
     [self stopLocationServer];
     //关闭定位服务
@@ -180,7 +191,9 @@
     if ([CLLocationManager locationServicesEnabled]) {
         [_locationManager startUpdatingLocation];
     }else{
-        NSLog(@"无法获取城市信息，请开启定位功能");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"无法获取城市信息，请开启定位功能"];
     }
 }
 
@@ -197,15 +210,23 @@
         //关闭陀螺仪服务
         if ([_motionManager isAccelerometerActive]) {
             if (_accelerometerType == AccelerometerType_Custom) {
-                NSLog(@"切换加速计模式，从正常模式切换到定时回写模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"切换加速计模式，从正常模式切换到定时回写模式"];
             } else {
-                NSLog(@"切换加速计模式，从定时回写模式切换到正常模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"切换加速计模式，从定时回写模式切换到正常模式"];
             }
         } else {
             if (_accelerometerType == AccelerometerType_Custom) {
-                NSLog(@"开启加速计，设定为正常模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"开启加速计，设定为正常模式"];
             } else {
-                NSLog(@"开启加速计，设定为定时回写模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"开启加速计，设定为定时回写模式"];
             }
         }
         //切换状态
@@ -270,14 +291,18 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     if ([error code] != kCLErrorLocationUnknown && [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
-        NSLog(@"后台定位出错");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"后台定位出错"];
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     //定位授权状态改变
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
-        NSLog(@"授权定位服务");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"授权定位服务"];
         [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
         if (!_isCMServerActivity) {
             [self startAccelerometerServer:AccelerometerType_Custom];
@@ -328,7 +353,9 @@
         _callState = CallState_Unknow;
         //设置低电量标志
         if (!_lowEnergy) {
-            NSLog(@"电量低于20%%,不在记录数据");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"电量低于20%%,不在记录数据"];
             //开始进入低电量
             _lowEnergy = YES;
             //添加核心事件
@@ -350,7 +377,9 @@
     } else if (batteryLevel >= DSLOWPOWER || [[UIDevice currentDevice] batteryState] == UIDeviceBatteryStateCharging){
         if (_lowEnergy) {
             //电量恢复
-            NSLog(@"电量高于限定,恢复记录数据");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"电量高于限定,恢复记录数据"];
             [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
             //开始退出低电量
             _lowEnergy = NO;
@@ -449,35 +478,53 @@
         if (speed >= WALKING_SPEED) {
             //移动速度大于WALKING_SPEED只可能是开车
             if (_currentPedometerType != PedometerType_Drive) {
-                NSLog(@"陀螺仪开始判断为开车");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"陀螺仪开始判断为开车"];
             }
             _currentPedometerType = PedometerType_Drive;
-            NSLog(@"感测到一条新记录，经加速计判定为开车");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经加速计判定为开车"];
         } else if(speed < STOP_SPEED && speed >= 0 && _pedometer > PEDOMETERTYPEWALK_VALUE){
             //速度小于WALKING_SPEED但是有明显的步行痕迹就一定是步行
             if (_currentPedometerType != PedometerType_Walk) {
-                NSLog(@"陀螺仪开始判断为走路");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"陀螺仪开始判断为走路"];
             }
             _currentPedometerType =  PedometerType_Walk;
-            NSLog(@"感测到一条新记录，经加速计判定为走路");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经加速计判定为走路"];
         } else if(speed <= STOP_SPEED && speed >= 0 && _pedometer < PEDOMETERTYPEWALK_VALUE){
             //速度为0同时特征值很低就判断为静止
             if (_currentPedometerType != PedometerType_Stop) {
-                NSLog(@"陀螺仪开始判断为静止");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"陀螺仪开始判断为静止"];
             }
             _currentPedometerType =  PedometerType_Stop;
-            NSLog(@"感测到一条新记录，经加速计判定为静止");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经加速计判定为静止"];
         } else if(_currentPedometerType !=  PedometerType_Drive && speed > WALKING_SPEED/3 && _pedometer < PEDOMETERTYPEWALK_VALUE){
             //步行转开车
             if (_currentPedometerType != PedometerType_Drive) {
-                NSLog(@"陀螺仪开始修正为开车");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"陀螺仪开始修正为开车"];
             }
             _currentPedometerType =  PedometerType_Drive;
-            NSLog(@"感测到一条新记录，经加速计判定为开车");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经加速计判定为开车"];
         }
         if (meters > 100){
             if (_locationManager.desiredAccuracy != kCLLocationAccuracyBest) {
-                NSLog(@"距离出现跨越恢复最佳状态");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"距离出现跨越恢复最佳状态"];
                 [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
             }
         }
@@ -485,22 +532,32 @@
         //M7根据卫星速度修正状态
         if (_journeyRecord.valid && (speed + _journeyRecord.speed)/2 > 4 && _confidence != CMMotionActivityConfidenceHigh) {
             if (_currentPedometerType != PedometerType_Drive) {
-                NSLog(@"M7根据卫星速度%f修正为开车" ,speed + _journeyRecord.speed);
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:[NSString stringWithFormat:@"M7根据卫星速度%f修正为开车" ,speed + _journeyRecord.speed]];
             }
             _currentPedometerType = PedometerType_Drive;
         }
         if (meters > 100 || speed > WALKING_SPEED/2){
             if (_locationManager.desiredAccuracy != kCLLocationAccuracyBest) {
-                NSLog(@"距离出现跨越恢复最佳状态");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"距离出现跨越恢复最佳状态"];
                 [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
             }
         }
         if (_currentPedometerType ==  PedometerType_Walk) {
-            NSLog(@"感测到一条新记录，经M7判定为走路");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经M7判定为走路"];
         } else if (_currentPedometerType ==  PedometerType_Drive){
-            NSLog(@"感测到一条新记录，经M7判定为开车");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经M7判定为开车"];
         } else if (_currentPedometerType ==  PedometerType_Stop){
-            NSLog(@"感测到一条新记录，经M7判定为静止");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"感测到一条新记录，经M7判定为静止"];
         }
     }
     
@@ -514,7 +571,9 @@
         //连续两个开车点提高精度
         if (_journeyRecord.recordType == RecordType_Drive || _journeyRecord.recordType >= RecordType_HeavyBrake) {
             if (_locationManager.desiredAccuracy != kCLLocationAccuracyBest) {
-                NSLog(@"连续二点稳定有效速度才恢复最佳状态");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"连续二点稳定有效速度才恢复最佳状态"];
                 [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
             }
         }
@@ -528,7 +587,9 @@
             stopTimeSpan = timeStamp - _stopTimeInterval;
         }
         if(stopTimeSpan > 5*60){
-            NSLog(@"蓝牙启动，距离上次返回开车点间隔大于5分钟，降低定位精度");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"蓝牙启动，距离上次返回开车点间隔大于5分钟，降低定位精度"];
             [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyKilometer];
         }
         //连续两个静止点
@@ -536,7 +597,9 @@
             //相邻静止点丢弃
             [self saveTravelRecordAndLogInfoWithSaveRecordTimerType:SaveRecordTimerType_Location];
             //保存日志
-            NSLog(@"新记录点为非开车,相邻间隔点都是静止点,丢弃,速度:%f 特征值:%d", speed, _pedometer);
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:[NSString stringWithFormat:@"新记录点为非开车,相邻间隔点都是静止点,丢弃,速度:%f 特征值:%d", speed, _pedometer]];
             //重置电话状态
             _callState = CallState_Unknow;
             return;
@@ -567,14 +630,18 @@
     //开车但前进方向和速度都为负
     if (_currentPedometerType == PedometerType_Drive && (course < 0 || speed < 0)){
         //方向角小于0当误差点丢弃
-        NSLog(@"新记录为异常点,开车但方向角或速度小于0");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"新记录为异常点,开车但方向角或速度小于0"];
         _journeyRecord.valid = NO;
     }
     
     //去掉误差较大点和缓存点
     NSTimeInterval interval = [newLocation.timestamp timeIntervalSinceNow];
     if (horizontalAccuracy > HORIZONTALACCURACY) {
-        NSLog(@"新记录为误差较大点，丢弃");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"新记录为误差较大点，丢弃"];
         _journeyRecord.valid = NO;
     } else if (fabs(interval) > 10) {
         NSLog(@"新记录为卫星缓存点，丢弃");
@@ -585,18 +652,24 @@
     if (_currentPedometerType ==  PedometerType_Stop) {
         //静止的时候判断一个点偏移的距离不靠谱就返回
         if (_journeyRecord.recordId>0 && meters > (timeStamp - _journeyRecord.recordId) * WALKING_SPEED * 1.5) {
-            NSLog(@"新记录因去噪算法判定为禁止下的噪点，丢弃");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"新记录因去噪算法判定为禁止下的噪点，丢弃"];
             _journeyRecord.valid = NO;
         }
     } else if (_currentPedometerType ==  PedometerType_Walk) {
         //走路的时候判断一个点偏移的距离不靠谱就返回
         if (_journeyRecord.recordId > 0 && meters > (timeStamp - _journeyRecord.recordId) * WALKING_SPEED * 1.5) {
-            NSLog(@"新记录因去噪算法判定为走路下的噪点，丢弃");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"新记录因去噪算法判定为走路下的噪点，丢弃"];
             _journeyRecord.valid = NO;
         }
     } else if (_currentPedometerType ==  PedometerType_Drive){
         if (_journeyRecord.recordId > 0 && meters > (timeStamp - _journeyRecord.recordId) * MAPPOINT_HIGHTSPEED * 1.5) {
-            NSLog(@"新记录因去噪算法判定为开车下的噪点，丢弃");
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"新记录因去噪算法判定为开车下的噪点，丢弃"];
             _journeyRecord.valid = NO;
         }
     }
@@ -609,7 +682,9 @@
                 jiajiao = 360 - jiajiao;
             }
             if (fabs(jiajiao/((long)timeStamp - _journeyRecord.recordId)) > 45) {
-                NSLog(@"新记录方向角改变异常,丢弃");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"新记录方向角改变异常,丢弃"];
                 _journeyRecord.valid = NO;
             }
         }
@@ -677,7 +752,9 @@
                         float currentAcc = (_journeyRecord.speed-thirdTravelRecord.speed)/(timeStamp-(double)thirdTravelRecord.timeStamp/1000);
                         if (currentAcc >= 6||currentAcc <= -8) {
                             //异常加速度,速度用上一点和当前点换算
-                            NSLog(@"新记录因加速度异常，丢弃");
+                            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                              type:type_info
+                                                                              text:@"新记录因加速度异常，丢弃"];
                             _journeyRecord.valid = NO;
                         } else {
                             //判断异常加速度
@@ -746,25 +823,45 @@
                 _previousInterval = _currentInterval;
                 //播放声音
                 if (_previouAbnormalType == RecordType_HeavyBrake) {
-                    NSLog(@"新记录是异常点 异常类型为：急刹车");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：急刹车"];
                 } else if (_previouAbnormalType == RecordType_HeavyStart){
-                    NSLog(@"新记录是异常点 异常类型为：急启动");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：急启动"];
                 } else if (_previouAbnormalType == RecordType_HeavyTurnLeft){
-                    NSLog(@"新记录是异常点 异常类型为：急左转");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：急左转"];
                 } else if (_previouAbnormalType == RecordType_HeavyTurnRight){
-                    NSLog(@"新记录是异常点 异常类型为：急右转");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：急右转"];
                 } else if (_previouAbnormalType == RecordType_CrazySpeed){
-                    NSLog(@"新记录是异常点 异常类型为：超限速");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：超限速"];
                 } else if (_previouAbnormalType == RecordType_CallPhone){
-                    NSLog(@"新记录是异常点 异常类型为：打电话");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：打电话"];
                 } else if (_previouAbnormalType == RecordType_AnswerPhone){
-                    NSLog(@"新记录是异常点 异常类型为：接电话");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：接电话"];
                 } else if (_previouAbnormalType == RecordType_SendMessage){
-                    NSLog(@"新记录是异常点 异常类型为：发短信");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：发短信"];
                 } else if (_previouAbnormalType == RecordType_ReadMessage){
-                    NSLog(@"新记录是异常点 异常类型为：读短信");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：读短信"];
                 } else if (_previouAbnormalType == RecordType_UsePhone){
-                    NSLog(@"新记录是异常点 异常类型为：玩手机");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"新记录是异常点 异常类型为：玩手机"];
                 }
             } else {
                 //不满足异常的时间，回置类型
@@ -839,9 +936,13 @@
         }
     }
     if (!_isLocationServerStarted) {
-        NSLog(@"开启定位服务,定位精确度 从%f 调到%f", _locationManager.desiredAccuracy,desiredAccuracy);
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:[NSString stringWithFormat:@"开启定位服务,定位精确度 从%f 调到%f", _locationManager.desiredAccuracy,desiredAccuracy]];
     } else {
-        NSLog(@"重新调整手机定位精确度 从%f 调到%f",_locationManager.desiredAccuracy,desiredAccuracy);
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:[NSString stringWithFormat:@"重新调整手机定位精确度 从%f 调到%f",_locationManager.desiredAccuracy,desiredAccuracy]];
     }
     //先停止可能的定位服务
     if (_isLocationServerStarted) {
@@ -886,17 +987,25 @@
         //关闭陀螺仪服务
         if ([_motionManager isAccelerometerActive]) {
             if (_accelerometerType == AccelerometerType_Custom) {
-                NSLog(@"切换加速计模式，从正常模式切换到定时回写模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"切换加速计模式，从正常模式切换到定时回写模式"];
             } else {
-                NSLog(@"切换加速计模式，从定时回写模式切换到正常模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"切换加速计模式，从定时回写模式切换到正常模式"];
             }
             //关闭加速计
             [_motionManager stopAccelerometerUpdates];
         } else {
             if (_ccelerometerType == AccelerometerType_Custom) {
-                NSLog(@"开启加速计，设定为正常模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"开启加速计，设定为正常模式"];
             } else {
-                NSLog(@"开启加速计，设定为定时回写模式");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"开启加速计，设定为定时回写模式"];
             }
         }
         
@@ -970,19 +1079,25 @@
                                              //判断当前的运动状态
                                              if (activity.automotive) {
                                                  if (_currentPedometerType != PedometerType_Drive) {
-                                                     NSLog(@"M7开始判断为开车，提高到最佳精度");
+                                                     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                                                       type:type_info
+                                                                                                       text:@"M7开始判断为开车，提高到最佳精度"];
                                                  }
                                                  //提高到最佳精度
                                                  [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
                                                  _currentPedometerType = PedometerType_Drive;
                                              } else if(activity.walking || activity.running){
                                                  if (_currentPedometerType != PedometerType_Walk) {
-                                                     NSLog(@"M7开始判断为走路");
+                                                     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                                                       type:type_info
+                                                                                                       text:@"M7开始判断为走路"];
                                                  }
                                                  _currentPedometerType = PedometerType_Walk;
                                              } else if (activity.stationary){
                                                  if (_currentPedometerType != PedometerType_Stop) {
-                                                     NSLog(@"M7开始判断为静止");
+                                                     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                                                       type:type_info
+                                                                                                       text:@"M7开始判断为静止"];
                                                  }
                                                  _currentPedometerType = PedometerType_Stop;
                                              }
@@ -994,7 +1109,9 @@
 }
 
 -(void)stopCMStepServer{
-    NSLog(@"关闭CM服务");
+    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                      type:type_info
+                                                      text:@"关闭CM服务"];
     [_activityManager stopActivityUpdates];
     _isCMServerActivity = NO;
 }
@@ -1062,7 +1179,9 @@
 - (void)saveAllRecordInfo{
     //保存行程数据
     if (_journeyArray.count + _recordArray.count + _eventArray.count> 0) {
-        NSLog(@"保存阶段,开始保存");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"保存阶段,开始保存"];
         [_databaseService.fmdbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
             BOOL needrollback = NO;
             for (int index=0;!needrollback && index < _journeyArray.count; index++) {
@@ -1079,10 +1198,14 @@
             }
             if (needrollback) {
                 *rollback = YES;
-                NSLog(@"保存阶段，保存行程失败，回滚");
+                [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                  type:type_info
+                                                                  text:@"保存阶段，保存行程失败，回滚"];
             } else {
                 if ([db commit]) {
-                    NSLog(@"保存阶段，保存行程成功，删除行程缓存");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"保存阶段，保存行程成功，删除行程缓存"];
                     //删除缓存
                     [_journeyArray removeAllObjects];
                     [_recordArray removeAllObjects];
@@ -1091,7 +1214,9 @@
                     [self performSelectorOnMainThread:@selector(didSaveAllData) withObject:nil waitUntilDone:NO];
                 } else {
                     *rollback = YES;
-                    NSLog(@"保存阶段，保存行程失败，回滚");
+                    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                      type:type_info
+                                                                      text:@"保存阶段，保存行程失败，回滚"];
                 }
             }
         }];

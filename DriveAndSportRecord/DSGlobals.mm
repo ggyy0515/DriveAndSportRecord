@@ -74,6 +74,10 @@ NSString *kAudioSessionManagerDevice_Unknow     = @"AudioSessionManagerDevice_Un
     return self;
 }
 
+- (void)setUserId:(NSInteger)userId {
+    _userId = userId;
+}
+
 //获得有序的数据分档
 - (void)getOrderedSpeedUpArray{
     //结合加权加速度和平均时速判断急加速急减速
@@ -123,7 +127,9 @@ NSString *kAudioSessionManagerDevice_Unknow     = @"AudioSessionManagerDevice_Un
     [[self backgroundTask] saveTravelRecordAndLogInfoWithSaveRecordTimerType:SaveRecordTimerType_Force];
     dispatch_async(dispatch_get_main_queue(), ^{
         //检测是否开启GPS
-        NSLog(@"进前台 开始检测是否开启定位");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"进前台 开始检测是否开启定位"];
         [self checkLocationServer];
     });
 }
@@ -166,7 +172,9 @@ NSString *kAudioSessionManagerDevice_Unknow     = @"AudioSessionManagerDevice_Un
         needAlertGPS = NO;
     }
     if (needAlertDS) {
-        NSLog(@"检测用户没有开启运动状态侦测服务，提示用户开启");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"检测用户没有开启运动状态侦测服务，提示用户开启"];
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"开启服务" message:@"运动状态服务未启用，是否启用"
                                                           delegate:self
                                                  cancelButtonTitle:@"否"
@@ -179,6 +187,10 @@ NSString *kAudioSessionManagerDevice_Unknow     = @"AudioSessionManagerDevice_Un
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (needAlertGPS) {
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"请在“设置-隐私-定位服务”打开定位服务"];
+        [APP_DELEGATE showInfoInBottomWithText:@"请在“设置-隐私-定位服务”打开定位服务"];
         NSLog(@"请在“设置-隐私-定位服务”打开定位服务");//需要提示
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DS_SERVER_FIRST_BOOL_KEY];
         NSTimeInterval updateServerInterval = [[NSDate date] timeIntervalSince1970];
@@ -610,13 +622,16 @@ NSString *kAudioSessionManagerDevice_Unknow     = @"AudioSessionManagerDevice_Un
                     }
                     if (needOpenStartLocationServer) {
                         //打开DS
-                        //打开平安行服务
-                        NSLog(@"检测平安行服务未启动 用户点击确定开启平安行服务");
+                        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                          type:type_info
+                                                                          text:@"检测DS服务未启动 开启DS行服务"];
                         [[DSDriveAndSportRecord sharedRecord] changeDS:YES];
                     }
                     if (needAlertOpenGPS) {
                         //提示打开GPS
-                        NSLog(@"请在“设置-隐私-定位服务”打开定位服务");//需要提示
+                        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                          type:type_info
+                                                                          text:@"请在“设置-隐私-定位服务”打开定位服务"];
                     }
                     break;
                 }

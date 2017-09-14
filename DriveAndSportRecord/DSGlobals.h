@@ -42,6 +42,7 @@
 - (DSDatabaseService *)databaseService;
 - (DSBackgroungTask *)backgroundTask;
 - (DSDataAnalyze *)dataAnalyze;
+- (void)setUserId:(NSInteger)userId;
 
 //程序进入前台
 - (void)didBecomeActive;

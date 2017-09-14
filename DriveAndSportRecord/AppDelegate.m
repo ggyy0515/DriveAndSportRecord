@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "DSDriveAndSportRecord.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +32,15 @@
                                           text:@"应用启动"];
     
     _globals = [DSGlobals sharedGlobals];
+    _record = [DSDriveAndSportRecord sharedRecord];
+    
+    [_record locationManager];
+    
+    [_globals setUserId:112233];
+    [[_globals backgroundTask] startAllServer];
+    
+    ViewController *vc = [[ViewController alloc] init];
+    self.window.rootViewController = vc;
     
     return YES;
 }
@@ -54,6 +65,19 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (void)showInfoInBottomWithText:(NSString *)text {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    // Set the text mode to show only text.
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = text;
+    // Move to bottm center.
+    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+    
+    [hud hideAnimated:YES afterDelay:3.f];
 }
 
 @end

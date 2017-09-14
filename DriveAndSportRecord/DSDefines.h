@@ -235,7 +235,7 @@ typedef enum {
 #define carDrivingTime 5
 
 #define WEAK_SELF                   typeof(self) __weak weakSelf = self;
-#define APP_DELEGATE                (AppDelegate *)[[UIApplication sharedApplication] delegate]
+#define APP_DELEGATE                ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #define TABBAR_HEIGHT 49             //自定义UITabBar的高度
 #define STATEBAR_HEIGHT 20           //状态栏高度
 #define TABBAR_HEIGHT 49             //自定义UITabBar的高度

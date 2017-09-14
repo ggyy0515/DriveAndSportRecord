@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DSDriveAndSportRecord.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -16,6 +17,10 @@
 @property (nonatomic, strong) ECLogServer *logServer;
 
 @property (nonatomic, strong) DSGlobals *globals;
+
+@property (nonatomic, strong) DSDriveAndSportRecord *record;
+
+- (void)showInfoInBottomWithText:(NSString *)text;
 
 @end
 

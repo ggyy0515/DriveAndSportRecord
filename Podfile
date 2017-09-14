@@ -23,6 +23,7 @@ target 'DriveAndSportRecord' do
 #pod "ChameleonFramework"
 #pod "YTKKeyValueStore"
 pod "FMDB"
+pod "MBProgressHUD"
 #pod "KGModal"
 #pod "SDWebImage", "~>3.7.3"
 #pod "Mantle", "~> 2.0.3"

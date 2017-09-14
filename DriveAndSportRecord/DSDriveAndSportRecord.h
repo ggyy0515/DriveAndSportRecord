@@ -15,6 +15,8 @@ extern NSString *const DSNotificationNameAllJouneryDidSaved;
 
 + (instancetype)sharedRecord;
 
+- (CLLocationManager *)locationManager;
+
 - (BOOL)isLocationServicesEnabled;
 
 - (BOOL)isAuthorized;
