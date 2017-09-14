@@ -11,13 +11,17 @@
 
 @interface DSJourneyRecordModel : NSObject <NSMutableCopying>
 /**
- *  记录id
+ *  记录id 主键
  */
 @property (nonatomic, assign) long long recordId;
 /**
  *  行程id 外键
  */
 @property (nonatomic, assign) NSInteger journeyId;
+/**
+ 路途id
+ */
+@property (nonatomic, assign) NSInteger roadwayId;
 /**
  *  用户id
  */

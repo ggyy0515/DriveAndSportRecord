@@ -43,4 +43,11 @@
  */
 + (double)getBatteryLevel;
 
+/**
+ 获取app版本号
+
+ @return 
+ */
++ (NSString*)appVersion;
+
 @end

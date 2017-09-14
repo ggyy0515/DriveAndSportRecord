@@ -20,7 +20,7 @@
 /**
  *  距离
  */
-@property (nonatomic, assign) float distance;
+@property (nonatomic, assign) double distance;
 /**
  *  时间花销
  */

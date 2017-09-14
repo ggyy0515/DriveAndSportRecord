@@ -7,6 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreMotion/CoreMotion.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <CoreTelephony/CTCallCenter.h>
+#import <CoreTelephony/CTCall.h>
+
+#import "DSDefines.h"
+
+@class DSGlobals;
+@class DSJourneyRecordModel;
+@class DSDatabaseService;
 
 
 typedef enum {
@@ -39,5 +50,30 @@ typedef enum {
  @param userId userId
  */
 - (void)setUserId:(NSInteger)userId;
+- (void)saveTravelRecordAndLogInfoWithSaveRecordTimerType:(SaveRecordTimerType)saveRecordTimerType;
+- (void)startAllServer;
+- (void)stopAllServer;
+
+/**
+ 是否开启CM服务
+ */
+@property (nonatomic, assign) BOOL isCMServerActivity;
+@property (nonatomic, assign) CallState callState;
+@property (nonatomic, assign) CallState currentCallState;
+@property (nonatomic, assign) BOOL lowEnergy;
+@property (nonatomic, strong) NSMutableArray *eventArray;
+@property (nonatomic, assign) BOOL isLocationServerStarted;
+@property (nonatomic, strong) DSJourneyRecordModel *journeyRecord;
+@property (nonatomic, assign) PedometerType currentPedometerType;
+@property (nonatomic, strong) CTCallCenter *callCenter;
+@property (nonatomic, assign) __block CMMotionActivityConfidence confidence;
+@property (nonatomic, assign) NSTimeInterval  stopTimeInterval;
+@property (nonatomic, strong) DSGlobals *globals;
+@property (nonatomic, strong) NSMutableArray *recordArray;
+@property (nonatomic, assign) int previouAbnormalType;
+@property (nonatomic, assign) NSTimeInterval currentInterval, previousInterval;
+@property (nonatomic, strong) NSMutableArray *journeyArray;
+@property (nonatomic, strong) DSDatabaseService *databaseService;
+@property (nonatomic, strong) CMMotionActivityManager *activityManager;
 
 @end

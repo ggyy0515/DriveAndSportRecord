@@ -11,6 +11,14 @@
 
 #pragma mark - Enums
 
+//车辆前进方向
+typedef enum {
+    OrientationType_East = 1,  //东
+    OrientationType_South = 2, //南
+    OrientationType_West = 3,  //西
+    OrientationType_North = 4, //北
+} OrientationType;
+
 //标记类型
 typedef enum {
     //默认
@@ -150,6 +158,57 @@ typedef enum {
     RoadType_BranchRoad = 4,
 } RoadType;
 
+typedef enum {
+    EventType_Powner   = 0,     // 电量事件
+    EventType_Wifi     = 1,     // 网络事件
+    EventType_Memory   = 2,     // 内存事件
+    EventType_Region   = 3,     // iBeacon事件
+} EventType;
+
+
+typedef enum {
+    EventValue_Off     = 0,     // 关闭事件
+    EventValue_On      = 1,     // 开启事件
+} EventValue;
+
+
+//异常类型
+typedef enum {
+    AbnormalType_HeavyBrake = 1,
+    AbnormalType_HeavyStart = 2,
+    AbnormalType_HeavyTurnLeft = 3,
+    AbnormalType_HeavyTurnRight = 4,
+    AbnormalType_CrazySpeed = 5,
+    AbnormalType_CallPhone = 6,
+    AbnormalType_AnswerPhone = 7,
+    AbnormalType_SendMessage = 8,
+    AbnormalType_ReadMessage = 9,
+    AbnormalType_UsePhone = 10,
+    //疲劳驾驶
+    AbnormalType_FatigueDriving = 11,
+    //转速不匹配
+    AbnormalType_SpeedNotMatch = 12,
+    //高转速
+    AbnormalType_HighRotationNo = 13,
+    //常怠速
+    AbnormalType_IdelNo = 14,
+} AbnormalType;
+
+//记步类型
+typedef enum {
+    PedometerType_Walk = 1,
+    PedometerType_Drive = 2,
+    PedometerType_Stop = 3,
+} PedometerType;
+
+//路途类型
+typedef enum {
+    RoadwayType_Walk = 1,
+    RoadwayType_Drive = 2,
+    RoadwayType_Stop = 3,
+} RoadwayType;
+
+
 
 #pragma mark - Macros
 
@@ -176,6 +235,7 @@ typedef enum {
 #define carDrivingTime 5
 
 #define WEAK_SELF                   typeof(self) __weak weakSelf = self;
+#define APP_DELEGATE                (AppDelegate *)[[UIApplication sharedApplication] delegate]
 #define TABBAR_HEIGHT 49             //自定义UITabBar的高度
 #define STATEBAR_HEIGHT 20           //状态栏高度
 #define TABBAR_HEIGHT 49             //自定义UITabBar的高度
@@ -186,6 +246,10 @@ typedef enum {
 #define IPHONE5_HEIGHT 568 //iPhone5设备的高度
 #define NAVIGATIONBAR_HEIGHT 44      // 导航栏的高度
 #define DSLOWPOWER  20              //低电量
+
+/***************************各种宏******************************/
+#define DS_SERVER_FIRST_BOOL_KEY                        @"DS_SERVER_FIRST_BOOL_KEY"//提示过了用户打开运动侦测
+#define DS_SERVER_UPDATE_DATE                           @"DS_SERVER_UPDATE_DATE"//上次提示的时间
 
 
 #endif /* DSDefines_h */

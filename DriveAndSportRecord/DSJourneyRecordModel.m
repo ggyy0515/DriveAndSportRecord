@@ -14,6 +14,7 @@
     DSJourneyRecordModel *copyModel = [[DSJourneyRecordModel allocWithZone:zone] init];
     copyModel.recordId = _recordId;
     copyModel.journeyId = _journeyId;
+    copyModel.roadwayId = _roadwayId;
     copyModel.userId = _userId;
     copyModel.recordIndex = _recordIndex;
     copyModel.longitude = _longitude;

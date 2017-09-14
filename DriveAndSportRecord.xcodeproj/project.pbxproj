@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A221EFD1F5EA79200BFAE5A /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A221EFB1F5EA79200BFAE5A /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6A2D67CC1D5888B50079B51C /* DSJourneyRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D67CB1D5888B50079B51C /* DSJourneyRecordModel.m */; };
 		6A2D67CF1D5ACFD20079B51C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67CE1D5ACFD20079B51C /* MapKit.framework */; };
 		6A2D67D11D5AD0390079B51C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67D01D5AD0390079B51C /* CoreLocation.framework */; };
@@ -15,6 +16,16 @@
 		6A2D67D71D5AD0660079B51C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D67D61D5AD0660079B51C /* CoreTelephony.framework */; };
 		6A2D67DA1D5AD0B00079B51C /* DSBackgroungTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D67D91D5AD0B00079B51C /* DSBackgroungTask.m */; };
 		6A2D67DD1D5B0B220079B51C /* DSRecordConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D67DC1D5B0B220079B51C /* DSRecordConfig.m */; };
+		6A41A4651F68BFBD0060F9A4 /* DSDriveAndSportRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A41A4641F68BFBD0060F9A4 /* DSDriveAndSportRecord.m */; };
+		6A41A4671F6A0D7E0060F9A4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A41A4661F6A0D7E0060F9A4 /* CoreBluetooth.framework */; };
+		6A41A4691F6A0F770060F9A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A41A4681F6A0F770060F9A4 /* AVFoundation.framework */; };
+		6A41A46F1F6A11600060F9A4 /* ECLogDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A41A46C1F6A11600060F9A4 /* ECLogDetailModel.m */; };
+		6A41A4701F6A11600060F9A4 /* ECLogServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A41A46E1F6A11600060F9A4 /* ECLogServer.m */; };
+		6A44DF4C1F67BD64006EE115 /* DSRoadwayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A44DF4B1F67BD64006EE115 /* DSRoadwayModel.m */; };
+		6A44E60B1F590AF600A54EA3 /* DSEventInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A44E60A1F590AF600A54EA3 /* DSEventInfoModel.m */; };
+		6A44E60E1F59121500A54EA3 /* DSGlobals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6A44E60D1F59121500A54EA3 /* DSGlobals.mm */; };
+		6A44E6111F59128800A54EA3 /* gpscorrect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A44E60F1F59128800A54EA3 /* gpscorrect.cpp */; };
+		6A44E6141F59134300A54EA3 /* DSDataAnalyze.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A44E6131F59134300A54EA3 /* DSDataAnalyze.m */; };
 		6AAAA2201D52D398001984CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA21F1D52D398001984CF /* main.m */; };
 		6AAAA2231D52D398001984CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAA2221D52D398001984CF /* AppDelegate.m */; };
 		6AAAA2251D52D398001984CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AAAA2241D52D398001984CF /* Assets.xcassets */; };
@@ -47,6 +58,9 @@
 		2326E163A3931B423FC99FAA /* Pods-DriveAndSportRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriveAndSportRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DriveAndSportRecord/Pods-DriveAndSportRecord.debug.xcconfig"; sourceTree = "<group>"; };
 		4275650D9D035A1D455D29B5 /* libPods-DriveAndSportRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DriveAndSportRecord.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1089B4C79BD591E55EE853 /* Pods-DriveAndSportRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriveAndSportRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-DriveAndSportRecord/Pods-DriveAndSportRecord.release.xcconfig"; sourceTree = "<group>"; };
+		6A221EFA1F5EA79200BFAE5A /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		6A221EFB1F5EA79200BFAE5A /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		6A221EFC1F5EA79200BFAE5A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6A2D67CA1D5888B50079B51C /* DSJourneyRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJourneyRecordModel.h; sourceTree = "<group>"; };
 		6A2D67CB1D5888B50079B51C /* DSJourneyRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJourneyRecordModel.m; sourceTree = "<group>"; };
 		6A2D67CD1D588C000079B51C /* DSDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDefines.h; sourceTree = "<group>"; };
@@ -59,6 +73,24 @@
 		6A2D67D91D5AD0B00079B51C /* DSBackgroungTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSBackgroungTask.m; sourceTree = "<group>"; };
 		6A2D67DB1D5B0B220079B51C /* DSRecordConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSRecordConfig.h; sourceTree = "<group>"; };
 		6A2D67DC1D5B0B220079B51C /* DSRecordConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSRecordConfig.m; sourceTree = "<group>"; };
+		6A41A4631F68BFBD0060F9A4 /* DSDriveAndSportRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDriveAndSportRecord.h; sourceTree = "<group>"; };
+		6A41A4641F68BFBD0060F9A4 /* DSDriveAndSportRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDriveAndSportRecord.m; sourceTree = "<group>"; };
+		6A41A4661F6A0D7E0060F9A4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		6A41A4681F6A0F770060F9A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6A41A46B1F6A11600060F9A4 /* ECLogDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECLogDetailModel.h; sourceTree = "<group>"; };
+		6A41A46C1F6A11600060F9A4 /* ECLogDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECLogDetailModel.m; sourceTree = "<group>"; };
+		6A41A46D1F6A11600060F9A4 /* ECLogServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECLogServer.h; sourceTree = "<group>"; };
+		6A41A46E1F6A11600060F9A4 /* ECLogServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECLogServer.m; sourceTree = "<group>"; };
+		6A44DF4A1F67BD64006EE115 /* DSRoadwayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSRoadwayModel.h; sourceTree = "<group>"; };
+		6A44DF4B1F67BD64006EE115 /* DSRoadwayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSRoadwayModel.m; sourceTree = "<group>"; };
+		6A44E6091F590AF600A54EA3 /* DSEventInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSEventInfoModel.h; sourceTree = "<group>"; };
+		6A44E60A1F590AF600A54EA3 /* DSEventInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSEventInfoModel.m; sourceTree = "<group>"; };
+		6A44E60C1F59121500A54EA3 /* DSGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGlobals.h; sourceTree = "<group>"; };
+		6A44E60D1F59121500A54EA3 /* DSGlobals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DSGlobals.mm; sourceTree = "<group>"; };
+		6A44E60F1F59128800A54EA3 /* gpscorrect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gpscorrect.cpp; sourceTree = "<group>"; };
+		6A44E6101F59128800A54EA3 /* gpscorrect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gpscorrect.h; sourceTree = "<group>"; };
+		6A44E6121F59134300A54EA3 /* DSDataAnalyze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDataAnalyze.h; sourceTree = "<group>"; };
+		6A44E6131F59134300A54EA3 /* DSDataAnalyze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDataAnalyze.m; sourceTree = "<group>"; };
 		6AAAA21B1D52D398001984CF /* DriveAndSportRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriveAndSportRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AAAA21F1D52D398001984CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AAAA2211D52D398001984CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A41A4691F6A0F770060F9A4 /* AVFoundation.framework in Frameworks */,
+				6A41A4671F6A0D7E0060F9A4 /* CoreBluetooth.framework in Frameworks */,
 				6A2D67D71D5AD0660079B51C /* CoreTelephony.framework in Frameworks */,
 				6A2D67D51D5AD0530079B51C /* AudioToolbox.framework in Frameworks */,
 				6A2D67D31D5AD0480079B51C /* CoreMotion.framework in Frameworks */,
@@ -118,6 +152,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6A221EF91F5EA79200BFAE5A /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				6A221EFA1F5EA79200BFAE5A /* OpenUDID.h */,
+				6A221EFB1F5EA79200BFAE5A /* OpenUDID.m */,
+				6A221EFC1F5EA79200BFAE5A /* README.md */,
+			);
+			path = OpenUDID;
+			sourceTree = "<group>";
+		};
+		6A41A46A1F6A11600060F9A4 /* LogServer */ = {
+			isa = PBXGroup;
+			children = (
+				6A41A46B1F6A11600060F9A4 /* ECLogDetailModel.h */,
+				6A41A46C1F6A11600060F9A4 /* ECLogDetailModel.m */,
+				6A41A46D1F6A11600060F9A4 /* ECLogServer.h */,
+				6A41A46E1F6A11600060F9A4 /* ECLogServer.m */,
+			);
+			path = LogServer;
+			sourceTree = "<group>";
+		};
 		6AAAA2121D52D398001984CF = {
 			isa = PBXGroup;
 			children = (
@@ -145,17 +200,31 @@
 			children = (
 				6AAAA2211D52D398001984CF /* AppDelegate.h */,
 				6AAAA2221D52D398001984CF /* AppDelegate.m */,
+				6A41A4631F68BFBD0060F9A4 /* DSDriveAndSportRecord.h */,
+				6A41A4641F68BFBD0060F9A4 /* DSDriveAndSportRecord.m */,
 				6A2D67CD1D588C000079B51C /* DSDefines.h */,
+				6A44E6101F59128800A54EA3 /* gpscorrect.h */,
+				6A44E60F1F59128800A54EA3 /* gpscorrect.cpp */,
+				6A44E60C1F59121500A54EA3 /* DSGlobals.h */,
+				6A44E60D1F59121500A54EA3 /* DSGlobals.mm */,
+				6A44E6121F59134300A54EA3 /* DSDataAnalyze.h */,
+				6A44E6131F59134300A54EA3 /* DSDataAnalyze.m */,
 				6A2D67D81D5AD0B00079B51C /* DSBackgroungTask.h */,
 				6A2D67D91D5AD0B00079B51C /* DSBackgroungTask.m */,
 				6A2D67DB1D5B0B220079B51C /* DSRecordConfig.h */,
 				6A2D67DC1D5B0B220079B51C /* DSRecordConfig.m */,
 				6AAAA24B1D52D581001984CF /* DSDatabaseService.h */,
 				6AAAA24C1D52D581001984CF /* DSDatabaseService.m */,
+				6A44DF4A1F67BD64006EE115 /* DSRoadwayModel.h */,
+				6A44DF4B1F67BD64006EE115 /* DSRoadwayModel.m */,
 				6AAAA2511D532207001984CF /* DSJourneyModel.h */,
 				6AAAA2521D532207001984CF /* DSJourneyModel.m */,
 				6A2D67CA1D5888B50079B51C /* DSJourneyRecordModel.h */,
 				6A2D67CB1D5888B50079B51C /* DSJourneyRecordModel.m */,
+				6A44E6091F590AF600A54EA3 /* DSEventInfoModel.h */,
+				6A44E60A1F590AF600A54EA3 /* DSEventInfoModel.m */,
+				6A41A46A1F6A11600060F9A4 /* LogServer */,
+				6A221EF91F5EA79200BFAE5A /* OpenUDID */,
 				6AAAA2241D52D398001984CF /* Assets.xcassets */,
 				6AAAA2261D52D398001984CF /* LaunchScreen.storyboard */,
 				6AAAA2291D52D398001984CF /* Info.plist */,
@@ -193,6 +262,8 @@
 		E894D4832E62B6AAFD47524B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A41A4681F6A0F770060F9A4 /* AVFoundation.framework */,
+				6A41A4661F6A0D7E0060F9A4 /* CoreBluetooth.framework */,
 				6A2D67D61D5AD0660079B51C /* CoreTelephony.framework */,
 				6A2D67D41D5AD0530079B51C /* AudioToolbox.framework */,
 				6A2D67D21D5AD0480079B51C /* CoreMotion.framework */,
@@ -394,12 +465,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A2D67DA1D5AD0B00079B51C /* DSBackgroungTask.m in Sources */,
+				6A44E6141F59134300A54EA3 /* DSDataAnalyze.m in Sources */,
 				6AAAA2231D52D398001984CF /* AppDelegate.m in Sources */,
 				6AAAA24D1D52D581001984CF /* DSDatabaseService.m in Sources */,
+				6A44E60B1F590AF600A54EA3 /* DSEventInfoModel.m in Sources */,
+				6A44DF4C1F67BD64006EE115 /* DSRoadwayModel.m in Sources */,
 				6AAAA2201D52D398001984CF /* main.m in Sources */,
+				6A44E6111F59128800A54EA3 /* gpscorrect.cpp in Sources */,
+				6A44E60E1F59121500A54EA3 /* DSGlobals.mm in Sources */,
+				6A41A4701F6A11600060F9A4 /* ECLogServer.m in Sources */,
 				6A2D67DD1D5B0B220079B51C /* DSRecordConfig.m in Sources */,
+				6A221EFD1F5EA79200BFAE5A /* OpenUDID.m in Sources */,
 				6A2D67CC1D5888B50079B51C /* DSJourneyRecordModel.m in Sources */,
+				6A41A46F1F6A11600060F9A4 /* ECLogDetailModel.m in Sources */,
 				6AAAA2531D532207001984CF /* DSJourneyModel.m in Sources */,
+				6A41A4651F68BFBD0060F9A4 /* DSDriveAndSportRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

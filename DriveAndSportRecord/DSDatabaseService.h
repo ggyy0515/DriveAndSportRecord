@@ -12,6 +12,8 @@
 
 @class DSJourneyModel;
 @class DSJourneyRecordModel;
+@class DSEventInfoModel;
+@class DSEventInfoModel;
 
 
 @interface DSDatabaseService : NSObject
@@ -69,5 +71,26 @@
  *  @return 成功标识
  */
 - (BOOL)saveDSJourneyRecordModel:(DSJourneyRecordModel *)model fmdb:(FMDatabase *)db;
+/**
+ 保存DSEventInfoModel
+
+ @param eventInfo DSEventInfoModel
+ @return 成功标识
+ */
+- (BOOL)saveEventInfoModel:(DSEventInfoModel *)eventInfo;
+/**
+ 保存DSEventInfoModel 提供此方法便于在业务逻辑层控制回滚
+
+ @param eventInfo DSEventInfoModel
+ @param db db
+ @return 成功标识
+ */
+- (BOOL)saveEventInfoModel:(DSEventInfoModel *)eventInfo fmdb:(FMDatabase *)db;
+
+
+
+
+//获取是否低电标识
+- (DSEventInfoModel *)getLastLowPownerEventInfoByEventDate:(NSInteger)eventDate UserId:(NSInteger)userid;
 
 @end

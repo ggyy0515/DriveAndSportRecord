@@ -46,4 +46,9 @@
     return [UIDevice currentDevice].batteryLevel * 100;
 }
 
+
++ (NSString*)appVersion {
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
 @end
