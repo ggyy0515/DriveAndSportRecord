@@ -20,6 +20,17 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    _logServer = [[ECLogServer alloc] init];
+    //开启日志服务
+    [_logServer open];
+    [_logServer deleteOldRecord];
+    [_logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                          type:type_info
+                                          text:@"应用启动"];
+    
+    _globals = [DSGlobals sharedGlobals];
+    
     return YES;
 }
 

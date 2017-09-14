@@ -81,6 +81,7 @@
 		6A41A46C1F6A11600060F9A4 /* ECLogDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECLogDetailModel.m; sourceTree = "<group>"; };
 		6A41A46D1F6A11600060F9A4 /* ECLogServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECLogServer.h; sourceTree = "<group>"; };
 		6A41A46E1F6A11600060F9A4 /* ECLogServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECLogServer.m; sourceTree = "<group>"; };
+		6A41A4711F6A12840060F9A4 /* DSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPrefixHeader.pch; sourceTree = "<group>"; };
 		6A44DF4A1F67BD64006EE115 /* DSRoadwayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSRoadwayModel.h; sourceTree = "<group>"; };
 		6A44DF4B1F67BD64006EE115 /* DSRoadwayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSRoadwayModel.m; sourceTree = "<group>"; };
 		6A44E6091F590AF600A54EA3 /* DSEventInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSEventInfoModel.h; sourceTree = "<group>"; };
@@ -237,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				6AAAA21F1D52D398001984CF /* main.m */,
+				6A41A4711F6A12840060F9A4 /* DSPrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -618,6 +620,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shuai Zhang (L9VWZ7LN7Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = B9RXZ99VB9;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DriveAndSportRecord/DSPrefixHeader.pch";
 				INFOPLIST_FILE = DriveAndSportRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -636,6 +640,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shuai Zhang (L9VWZ7LN7Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = B9RXZ99VB9;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DriveAndSportRecord/DSPrefixHeader.pch";
 				INFOPLIST_FILE = DriveAndSportRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

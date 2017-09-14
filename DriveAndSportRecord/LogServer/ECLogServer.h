@@ -41,8 +41,8 @@
  *  @param text      描述信息
  */
 - (void)insertDetailTableWithInterface:(NSString *)interface
-                            type:(log_type)type
-                            text:(NSString *)text;
+                                  type:(log_type)type
+                                  text:(NSString *)text;
 /**
  *  删除n天以前的旧日志(默认7天)
  */ 

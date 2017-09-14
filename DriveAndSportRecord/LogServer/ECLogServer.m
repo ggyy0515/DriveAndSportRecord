@@ -58,8 +58,8 @@
 }
 
 - (void)insertDetailTableWithInterface:(NSString *)interface
-                            type:(log_type)type
-                            text:(NSString *)text {
+                                  type:(log_type)type
+                                  text:(NSString *)text {
     if (!_state) {
         NSLog(@"日志系统未开启");
         return;

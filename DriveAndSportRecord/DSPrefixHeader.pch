@@ -1,0 +1,20 @@
+//
+//  DSPrefixHeader.pch
+//  DriveAndSportRecord
+//
+//  Created by Tristan on 2017/9/14.
+//  Copyright © 2017年 Tristan. All rights reserved.
+//
+
+#ifndef DSPrefixHeader_pch
+#define DSPrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import "ECLogServer.h"
+#import "DSGlobals.h"
+
+#endif
+
+
+#endif /* DSPrefixHeader_pch */
