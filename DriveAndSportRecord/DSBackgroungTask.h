@@ -55,6 +55,10 @@ typedef enum {
 - (void)stopAllServer;
 
 /**
+ 定位管理器
+ */
+@property (nonatomic, strong) CLLocationManager *locationManager;
+/**
  是否开启CM服务
  */
 @property (nonatomic, assign) BOOL isCMServerActivity;

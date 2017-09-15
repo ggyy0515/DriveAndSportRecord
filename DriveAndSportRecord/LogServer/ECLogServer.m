@@ -60,6 +60,7 @@
 - (void)insertDetailTableWithInterface:(NSString *)interface
                                   type:(log_type)type
                                   text:(NSString *)text {
+    NSLog(@"%@", text);
     if (!_state) {
         NSLog(@"日志系统未开启");
         return;
@@ -81,7 +82,7 @@
     //timeStamp
     model.timeStamp = [[NSDate date] timeIntervalSince1970];
     [self insertDetailTableWithData:model];
-    [APP_DELEGATE showInfoInBottomWithText:text];
+//    [APP_DELEGATE showInfoInBottomWithText:text];
 }
 
 - (void)deleteOldRecord {

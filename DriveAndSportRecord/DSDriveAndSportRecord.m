@@ -40,15 +40,14 @@ NSString *const DSNotificationNameAllJouneryDidSaved = @"DSNotificationNameAllJo
 
 - (CLLocationManager *)locationManager {
     if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager = [DSGlobals sharedGlobals].backgroundTask.locationManager;
     }
     if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [_locationManager requestWhenInUseAuthorization];
         [_locationManager requestAlwaysAuthorization];
     }
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.allowsBackgroundLocationUpdates = YES;
+    _locationManager.pausesLocationUpdatesAutomatically = NO;
     return _locationManager;
 }
 

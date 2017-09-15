@@ -25,10 +25,7 @@
 
 @interface DSBackgroungTask () <CLLocationManagerDelegate>
 
-/**
- 定位管理器
- */
-@property (nonatomic, strong) CLLocationManager *locationManager;
+
 /**
  陀螺仪管理器
  */
@@ -954,6 +951,7 @@
     _locationManager.delegate = self;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0) {
         _locationManager.pausesLocationUpdatesAutomatically = NO;
+        _locationManager.allowsBackgroundLocationUpdates = YES;
     }
     if ([_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [_locationManager requestAlwaysAuthorization];
