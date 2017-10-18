@@ -82,7 +82,7 @@
     //timeStamp
     model.timeStamp = [[NSDate date] timeIntervalSince1970];
     [self insertDetailTableWithData:model];
-//    [APP_DELEGATE showInfoInBottomWithText:text];
+    [APP_DELEGATE showInfoInBottomWithText:text];
 }
 
 - (void)deleteOldRecord {

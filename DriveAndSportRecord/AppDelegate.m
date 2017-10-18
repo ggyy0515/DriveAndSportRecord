@@ -34,8 +34,6 @@
     _globals = [DSGlobals sharedGlobals];
     _record = [DSDriveAndSportRecord sharedRecord];
     
-    [_record locationManager];
-    
     [_globals setUserId:112233];
     [[_globals backgroundTask] startAllServer];
     

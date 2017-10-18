@@ -640,7 +640,9 @@
                                                           text:@"新记录为误差较大点，丢弃"];
         _journeyRecord.valid = NO;
     } else if (fabs(interval) > 10) {
-        NSLog(@"新记录为卫星缓存点，丢弃");
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"新记录为卫星缓存点，丢弃"];
         _journeyRecord.valid = NO;
     }
     
