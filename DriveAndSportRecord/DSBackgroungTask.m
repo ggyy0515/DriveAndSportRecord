@@ -327,6 +327,15 @@
                                                               course:location.course
                                                                speed:location.speed
                                                            timestamp:location.timestamp];
+    //判断是否获取到车库门的经纬度
+    double desLng = [DSDriveAndSportRecord sharedRecord].desLongitude;
+    double desLat = [DSDriveAndSportRecord sharedRecord].desLatitude;
+    if (!desLng || !desLat) {
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"未获取到车库门经纬度"];
+//        return;
+    }
     
     //基础数据
     double longitude = newLocation.coordinate.longitude;

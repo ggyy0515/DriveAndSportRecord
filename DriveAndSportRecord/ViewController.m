@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DSDriveAndSportRecord.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *longitudeTF;
@@ -30,9 +31,16 @@
 - (IBAction)confirmBtnAction:(UIButton *)sender {
     if (!_LatitudeTF.text || !_longitudeTF.text || [_LatitudeTF.text isEqualToString:@""] || [_longitudeTF.text isEqualToString:@""]) {
         [SVProgressHUD showInfoWithStatus:@"请输入车库门的经纬度"];
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"未输入经纬度，点击确认按钮"];
         return;
     }
-    
+    [DSDriveAndSportRecord sharedRecord].desLongitude = _longitudeTF.text.doubleValue;
+    [DSDriveAndSportRecord sharedRecord].desLatitude = _LatitudeTF.text.doubleValue;
+    [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                      type:type_info
+                                                      text:@"车库门经纬度获取成功"];
 }
 
 /*
