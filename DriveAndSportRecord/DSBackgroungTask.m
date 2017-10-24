@@ -327,6 +327,7 @@
                                                               course:location.course
                                                                speed:location.speed
                                                            timestamp:location.timestamp];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"REQUESTCURRENTLOCATION" object:nil userInfo:@{@"location":location}];
     //判断是否获取到车库门的经纬度
     double desLng = [DSDriveAndSportRecord sharedRecord].desLongitude;
     double desLat = [DSDriveAndSportRecord sharedRecord].desLatitude;
@@ -334,7 +335,7 @@
         [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
                                                           type:type_info
                                                           text:@"未获取到车库门经纬度"];
-        //        return;
+        return;
     }
     
     //基础数据
