@@ -414,50 +414,7 @@
             }
         } else {
             //wifi不启动判断(暂时不处理wifi维度)
-//            if (globals.wifiNoRecord && appDelegate.networkStatus == kReachableViaWiFi) {
-//                //重置电话状态
-//                callState = CallState_Unknow;
-//                if (!isWifi){
-//                    [self addLogInfoWithLogType:type_bebug logText:@"进入wifi环境,不在记录数据"];
-//                    //开始进入wifi环境
-//                    isWifi = TRUE;
-//                    //添加核心事件
-//                    EventInfo *eventInfo = [[EventInfo alloc] init];
-//                    eventInfo.userId = userId;
-//                    eventInfo.eventDate = travelId;
-//                    eventInfo.eventType = EventType_Wifi;
-//                    eventInfo.eventValue = EventValue_Off;
-//                    eventInfo.timetag = timestamp;
-//                    eventInfo.decript = @"进入wifi环境，停止记录";
-//                    [eventArray addObject:eventInfo];
-//                    //进入wifi环境
-//                    [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyKilometer];
-//                    if (!isCMServerActivity) {
-//                        [self stopAccelerometerServer];
-//                    }
-//                }
-//                return;
-//            }
-//            else if (globals.wifiNoRecord && appDelegate.networkStatus != kReachableViaWiFi) {
-//                if (isWifi) {
-//                    [self addLogInfoWithLogType:type_bebug logText:@"离开wifi环境,开始记录数据"];
-//                    [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
-//                    isWifi = FALSE;
-//                    //添加核心事件
-//                    EventInfo *eventInfo = [[EventInfo alloc] init];
-//                    eventInfo.userId = userId;
-//                    eventInfo.eventDate = travelId;
-//                    eventInfo.eventType = EventType_Wifi;
-//                    eventInfo.eventValue = EventValue_On;
-//                    eventInfo.timetag = timestamp;
-//                    eventInfo.decript = @"离开wifi环境，开始记录";
-//                    [eventArray addObject:eventInfo];
-//                    //开始退出wifi环境
-//                    if (!isCMServerActivity) {
-//                        [self startAccelerometerServer:AccelerometerType_Custom];
-//                    }
-//                }
-//            }
+
         }
     }
     
@@ -1233,31 +1190,6 @@
         [self performSelectorOnMainThread:@selector(didSaveAllData) withObject:nil waitUntilDone:NO];
     }
     
-    //保存日志信息 后面补充日志系统
-//    if (logDetailInfoArray.count> 0) {
-//        [logServer.fmdbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-//            BOOL needrollback = NO;
-//            for (int index = 0;!needrollback && index<[logDetailInfoArray count]; index++) {
-//                logDetailModel *logDetailModel = [logDetailInfoArray objectAtIndex:index];
-//                needrollback = needrollback || [logServer saveLogDetailInfoModel:logDetailModel fmdb:db];
-//            }
-//            if (needrollback) {
-//                *rollback = YES;
-//                [self addLogInfoWithLogType:type_bebug logText:@"保存阶段，保存日志失败，回滚"];
-//            } else {
-//                if ([db commit]) {
-//                    [self addLogInfoWithLogType:type_bebug logText:@"保存阶段，保存日志成功，删除日志缓存"];
-//                    //删除缓存
-//                    [logDetailInfoArray removeAllObjects];
-//                    //发送保存完成的全局通知
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:PINGAN_LOCAL_ALLLOGINFODIDSAVAED object:nil];
-//                } else {
-//                    *rollback = YES;
-//                    [self addLogInfoWithLogType:type_bebug logText:@"保存阶段，保存日志失败，回滚"];
-//                }
-//            }
-//        }];
-//    }
 }
 
 -(void)didSaveAllData {
