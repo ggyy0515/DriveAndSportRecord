@@ -36,11 +36,27 @@
                                                           text:@"未输入经纬度，点击确认按钮"];
         return;
     }
+    if ([_LatitudeTF isFirstResponder]) {
+        [_LatitudeTF resignFirstResponder];
+    }
+    if ([_longitudeTF isFirstResponder]) {
+        [_longitudeTF resignFirstResponder];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:<#(nullable id)#> forKey:<#(nonnull NSString *)#>]
     [DSDriveAndSportRecord sharedRecord].desLongitude = _longitudeTF.text.doubleValue;
     [DSDriveAndSportRecord sharedRecord].desLatitude = _LatitudeTF.text.doubleValue;
     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
                                                       type:type_info
                                                       text:@"车库门经纬度获取成功"];
+}
+
+- (IBAction)tapAction:(UITapGestureRecognizer *)sender {
+    if ([_LatitudeTF isFirstResponder]) {
+        [_LatitudeTF resignFirstResponder];
+    }
+    if ([_longitudeTF isFirstResponder]) {
+        [_longitudeTF resignFirstResponder];
+    }
 }
 
 /*

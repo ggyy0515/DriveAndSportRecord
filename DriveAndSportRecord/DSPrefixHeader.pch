@@ -11,6 +11,9 @@
 
 #ifdef __OBJC__
 
+#define DESLNG              @"DESLNG"
+#define DESLAT              @"DESLAT"
+
 #import "ECLogServer.h"
 #import "DSGlobals.h"
 #import "AppDelegate.h"

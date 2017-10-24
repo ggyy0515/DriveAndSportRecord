@@ -334,7 +334,7 @@
         [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
                                                           type:type_info
                                                           text:@"未获取到车库门经纬度"];
-//        return;
+        return;
     }
     
     //基础数据
@@ -466,7 +466,7 @@
     _journeyRecord.accuracy = horizontalAccuracy;
     _journeyRecord.recordIndex = _locationManager.desiredAccuracy;
     
-    //相邻两个间隔点必须间隔1秒
+    //在离车库门两公里外，相邻两个间隔点必须间隔1秒
     if (_journeyRecord && (long)timeStamp == _journeyRecord.recordId) {
         return;
     }

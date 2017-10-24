@@ -54,7 +54,7 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目标经度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NM-yx-4rQ">
                     <rect key="frame" x="35" y="246.5" width="70" height="21"/>
@@ -72,10 +72,11 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                 </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="B6v-xM-xny" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="25z-Sx-is7"/>
                 <constraint firstItem="B6v-xM-xny" firstAttribute="trailing" secondItem="6NM-yx-4rQ" secondAttribute="trailing" id="2bY-Rd-oBh"/>
@@ -90,7 +91,15 @@
                 <constraint firstItem="EG9-4j-bqn" firstAttribute="centerY" secondItem="B6v-xM-xny" secondAttribute="centerY" id="l9n-S4-mQl"/>
                 <constraint firstItem="zqd-GY-P8G" firstAttribute="centerY" secondItem="6NM-yx-4rQ" secondAttribute="centerY" id="yVU-8N-scD"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="ZJp-pk-z4b" appends="YES" id="23C-Xh-hqg"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
+        <tapGestureRecognizer id="ZJp-pk-z4b">
+            <connections>
+                <action selector="tapAction:" destination="-1" id="X9j-F6-i3I"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
