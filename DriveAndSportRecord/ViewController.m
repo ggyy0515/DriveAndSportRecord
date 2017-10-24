@@ -21,6 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:DESLNG]) {
+        _longitudeTF.text = [[[NSUserDefaults standardUserDefaults] objectForKey:DESLNG] stringValue];
+        [DSDriveAndSportRecord sharedRecord].desLongitude = [[[NSUserDefaults standardUserDefaults] objectForKey:DESLNG] doubleValue];
+    }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:DESLAT]) {
+        _LatitudeTF.text = [[[NSUserDefaults standardUserDefaults] objectForKey:DESLAT] stringValue];
+        [DSDriveAndSportRecord sharedRecord].desLatitude = [[[NSUserDefaults standardUserDefaults] objectForKey:DESLAT] doubleValue];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,7 +50,9 @@
     if ([_longitudeTF isFirstResponder]) {
         [_longitudeTF resignFirstResponder];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:<#(nullable id)#> forKey:<#(nonnull NSString *)#>]
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithDouble:_longitudeTF.text.doubleValue] forKey:DESLNG];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithDouble:_LatitudeTF.text.doubleValue] forKey:DESLAT];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [DSDriveAndSportRecord sharedRecord].desLongitude = _longitudeTF.text.doubleValue;
     [DSDriveAndSportRecord sharedRecord].desLatitude = _LatitudeTF.text.doubleValue;
     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
