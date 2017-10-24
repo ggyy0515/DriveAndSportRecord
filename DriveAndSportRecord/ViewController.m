@@ -9,6 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *longitudeTF;
+@property (weak, nonatomic) IBOutlet UITextField *LatitudeTF;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 
 @end
 
@@ -22,6 +25,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)confirmBtnAction:(UIButton *)sender {
+    if (!_LatitudeTF.text || !_longitudeTF.text || [_LatitudeTF.text isEqualToString:@""] || [_longitudeTF.text isEqualToString:@""]) {
+        return;
+    }
 }
 
 /*

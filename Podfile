@@ -24,6 +24,7 @@ target 'DriveAndSportRecord' do
 #pod "YTKKeyValueStore"
 pod "FMDB"
 pod "MBProgressHUD"
+pod "SVProgressHUD"
 #pod "KGModal"
 #pod "SDWebImage", "~>3.7.3"
 #pod "Mantle", "~> 2.0.3"
