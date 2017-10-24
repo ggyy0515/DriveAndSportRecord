@@ -264,7 +264,7 @@
                                                              }
                                                          }
                                                          weakSelf.px = xx; weakSelf.py = yy; weakSelf.pz = zz;
-
+                                                         
                                                          
                                                      }];
             }
@@ -334,7 +334,7 @@
         [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
                                                           type:type_info
                                                           text:@"未获取到车库门经纬度"];
-        return;
+        //        return;
     }
     
     //基础数据
@@ -414,7 +414,7 @@
             }
         } else {
             //wifi不启动判断(暂时不处理wifi维度)
-
+            
         }
     }
     
@@ -423,8 +423,12 @@
     _journeyRecord.accuracy = horizontalAccuracy;
     _journeyRecord.recordIndex = _locationManager.desiredAccuracy;
     
+    //离车库门的距离
+    CLLocationDistance desDistance = [[[CLLocation alloc] initWithLatitude:desLat longitude:desLng] distanceFromLocation:[[CLLocation alloc] initWithLatitude:latitude longitude:longitude]];
+    
+    
     //在离车库门两公里外，相邻两个间隔点必须间隔1秒
-    if (_journeyRecord && (long)timeStamp == _journeyRecord.recordId) {
+    if (_journeyRecord && (long)timeStamp == _journeyRecord.recordId && desDistance > 2000) {
         return;
     }
     
@@ -491,6 +495,10 @@
             }
         }
     } else {
+        if (meters > 100) {
+            //抛弃与上一点之间的距离大于100的点
+            return;
+        }
         //M7根据卫星速度修正状态
         if (_journeyRecord.valid && (speed + _journeyRecord.speed)/2 > 4 && _confidence != CMMotionActivityConfidenceHigh) {
             if (_currentPedometerType != PedometerType_Drive) {
@@ -858,13 +866,26 @@
     _journeyRecord.roadwayId = 0;
     _journeyRecord.recordId = timeStamp;
     _journeyRecord.timeStamp = timeStamp * 1000;
+    _journeyRecord.time = [DSRecordConfig stringFromDate:[NSDate dateWithTimeIntervalSince1970:timeStamp]
+                                                  format:@"yyyy-MM-dd HH:mm:ss.sss"];
     
     if (_journeyRecord.recordType == RecordType_Drive) {
         _stopTimeInterval = timeStamp;
     }
+    //根据距离车库门的位置动态调整定位精度
+    if (desDistance > 2000) {
+        [manager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    } else if (desDistance <= 2000 && desDistance > 50) {
+        [manager setDesiredAccuracy:kCLLocationAccuracyBest];
+    } else {
+        [manager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    }
+    
+    
     
     //保存到缓存
     [_recordArray addObject:[_journeyRecord mutableCopy]];
+    //    [_databaseService saveDSJourneyRecordModel:_journeyRecord];
     
     //去除异常急转弯方法
     if(_recordArray.count >= 20){
@@ -877,10 +898,37 @@
         }
     }
     
-    //保存缓存
-    [self saveTravelRecordAndLogInfoWithSaveRecordTimerType:SaveRecordTimerType_Location];
+    double aveDistance = [self getAveDesdistanceOfLastPoints:20];
+    //判断是否开门
+    if (aveDistance <= 50 && desDistance <= 20 && _currentPedometerType == PedometerType_Drive) {
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"满足开门条件，触发指令"];
+        [SVProgressHUD showSuccessWithStatus:@"触发开门指令"];
+        //保存缓存
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                              type:type_info
+                                                              text:@"满足开门条件，触发指令后保存数据"];
+            [self saveAllRecordInfo];
+        });
+    }
+}
 
-    
+- (double)getAveDesdistanceOfLastPoints:(NSInteger)pointCount {
+    CLLocation *desClo = [[CLLocation alloc] initWithLatitude:[DSDriveAndSportRecord sharedRecord].desLatitude
+                                                    longitude:[DSDriveAndSportRecord sharedRecord].desLongitude];
+    double totalMeters = 0;
+    NSInteger count = pointCount < _recordArray.count ? pointCount :_recordArray.count;
+    @autoreleasepool {
+        for (NSInteger index = _recordArray.count - 1; index > _recordArray.count - count - 1; index --) {
+            DSJourneyRecordModel *model = [_recordArray objectAtIndex:index];
+            CLLocation *currClo = [[CLLocation alloc] initWithLatitude:model.latitude
+                                                             longitude:model.longitude];
+            totalMeters += [desClo distanceFromLocation:currClo];
+        }
+    }
+    return totalMeters / count;
 }
 
 -(void)startLocationServerWithDesiredAccuracy:(CLLocationAccuracy)_desiredAccuracy{
@@ -1040,36 +1088,36 @@
         _isCMServerActivity = YES;
         NSOperationQueue *operationQueue = [NSOperationQueue mainQueue];
         [_activityManager startActivityUpdatesToQueue:operationQueue
-                                         withHandler: ^(CMMotionActivity *activity) {
-                                             //判断当前的运动状态
-                                             if (activity.automotive) {
-                                                 if (_currentPedometerType != PedometerType_Drive) {
-                                                     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
-                                                                                                       type:type_info
-                                                                                                       text:@"M7开始判断为开车，提高到最佳精度"];
-                                                 }
-                                                 //提高到最佳精度
-                                                 [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
-                                                 _currentPedometerType = PedometerType_Drive;
-                                             } else if(activity.walking || activity.running){
-                                                 if (_currentPedometerType != PedometerType_Walk) {
-                                                     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
-                                                                                                       type:type_info
-                                                                                                       text:@"M7开始判断为走路"];
-                                                 }
-                                                 _currentPedometerType = PedometerType_Walk;
-                                             } else if (activity.stationary){
-                                                 if (_currentPedometerType != PedometerType_Stop) {
-                                                     [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
-                                                                                                       type:type_info
-                                                                                                       text:@"M7开始判断为静止"];
-                                                 }
-                                                 _currentPedometerType = PedometerType_Stop;
-                                             }
-                                             _confidence = activity.confidence;
-                                             //M7方案下的定时写回机制
-                                             [self saveTravelRecordAndLogInfoWithSaveRecordTimerType:SaveRecordTimerType_M7];
-                                         }];
+                                          withHandler: ^(CMMotionActivity *activity) {
+                                              //判断当前的运动状态
+                                              if (activity.automotive) {
+                                                  if (_currentPedometerType != PedometerType_Drive) {
+                                                      [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                                                        type:type_info
+                                                                                                        text:@"M7开始判断为开车，提高到最佳精度"];
+                                                  }
+                                                  //提高到最佳精度
+                                                  [self startLocationServerWithDesiredAccuracy:kCLLocationAccuracyBest];
+                                                  _currentPedometerType = PedometerType_Drive;
+                                              } else if(activity.walking || activity.running){
+                                                  if (_currentPedometerType != PedometerType_Walk) {
+                                                      [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                                                        type:type_info
+                                                                                                        text:@"M7开始判断为走路"];
+                                                  }
+                                                  _currentPedometerType = PedometerType_Walk;
+                                              } else if (activity.stationary){
+                                                  if (_currentPedometerType != PedometerType_Stop) {
+                                                      [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                                                                        type:type_info
+                                                                                                        text:@"M7开始判断为静止"];
+                                                  }
+                                                  _currentPedometerType = PedometerType_Stop;
+                                              }
+                                              _confidence = activity.confidence;
+                                              //M7方案下的定时写回机制
+                                              [self saveTravelRecordAndLogInfoWithSaveRecordTimerType:SaveRecordTimerType_M7];
+                                          }];
     }
 }
 
@@ -1151,15 +1199,15 @@
             BOOL needrollback = NO;
             for (int index=0;!needrollback && index < _journeyArray.count; index++) {
                 DSJourneyModel *currentJourneyInfo = [_journeyArray objectAtIndex:index];
-                needrollback = needrollback || [_databaseService saveDSJourneyModel:currentJourneyInfo fmdb:db];
+                needrollback = ![_databaseService saveDSJourneyModel:currentJourneyInfo fmdb:db] || needrollback;
             }
             for (int index = 0;!needrollback && index < [_recordArray count]; index++) {
                 DSJourneyRecordModel *currentJourneyRecord = [_recordArray objectAtIndex:index];
-                needrollback = needrollback || [_databaseService saveDSJourneyRecordModel:currentJourneyRecord fmdb:db];
+                needrollback = ![_databaseService saveDSJourneyRecordModel:currentJourneyRecord fmdb:db] || needrollback;
             }
             for (int index = 0;!needrollback && index < [_eventArray count]; index++) {
                 DSEventInfoModel *currentEventInfo = [_eventArray objectAtIndex:index];
-                needrollback = needrollback || [_databaseService saveEventInfoModel:currentEventInfo fmdb:db];
+                needrollback = ![_databaseService saveEventInfoModel:currentEventInfo fmdb:db] || needrollback;
             }
             if (needrollback) {
                 *rollback = YES;

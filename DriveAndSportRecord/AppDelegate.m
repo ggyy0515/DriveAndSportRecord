@@ -53,7 +53,7 @@
                                           type:type_info
                                           text:@"app进后台"];
     _globals.backgroundTask.locationManager.pausesLocationUpdatesAutomatically = NO;
-//    [_globals.backgroundTask.locationManager startMonitoringSignificantLocationChanges];
+    [_globals.backgroundTask.locationManager startMonitoringSignificantLocationChanges];
     
 }
 
