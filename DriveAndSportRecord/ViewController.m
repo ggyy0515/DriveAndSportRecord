@@ -29,8 +29,10 @@
 
 - (IBAction)confirmBtnAction:(UIButton *)sender {
     if (!_LatitudeTF.text || !_longitudeTF.text || [_LatitudeTF.text isEqualToString:@""] || [_longitudeTF.text isEqualToString:@""]) {
+        [SVProgressHUD showInfoWithStatus:@"请输入车库门的经纬度"];
         return;
     }
+    
 }
 
 /*

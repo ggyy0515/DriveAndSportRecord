@@ -12,6 +12,9 @@
 extern NSString *const DSNotificationNameAllJouneryDidSaved;
 
 @interface DSDriveAndSportRecord : NSObject
+//目标的经纬度
+@property (nonatomic, assign) double desLongitude;
+@property (nonatomic, assign) double desLatitude;
 
 + (instancetype)sharedRecord;
 

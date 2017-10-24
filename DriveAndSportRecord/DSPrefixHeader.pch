@@ -15,6 +15,7 @@
 #import "DSGlobals.h"
 #import "AppDelegate.h"
 #import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
 
 #endif
 
