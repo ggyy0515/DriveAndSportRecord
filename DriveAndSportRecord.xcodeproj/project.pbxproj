@@ -357,7 +357,7 @@
 				TargetAttributes = {
 					6AAAA21A1D52D398001984CF = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = B9RXZ99VB9;
+						DevelopmentTeam = 4AHA2D56UD;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -639,13 +639,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shuai Zhang (L9VWZ7LN7Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = B9RXZ99VB9;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4AHA2D56UD;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DriveAndSportRecord/DSPrefixHeader.pch";
 				INFOPLIST_FILE = DriveAndSportRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Tristan.DriveAndSportRecord;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danale.garagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -659,13 +660,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shuai Zhang (L9VWZ7LN7Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = B9RXZ99VB9;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4AHA2D56UD;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DriveAndSportRecord/DSPrefixHeader.pch";
 				INFOPLIST_FILE = DriveAndSportRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Tristan.DriveAndSportRecord;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danale.garagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
