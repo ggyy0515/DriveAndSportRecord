@@ -875,10 +875,19 @@
     }
     //根据距离车库门的位置动态调整定位精度
     if (desDistance > 2000) {
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"离目标大于2000米，降低精度"];
         [manager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
     } else if (desDistance <= 2000 && desDistance > 50) {
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"在2000至50米之间，提高精度"];
         [manager setDesiredAccuracy:kCLLocationAccuracyBest];
     } else {
+        [APP_DELEGATE.logServer insertDetailTableWithInterface:NSStringFromClass([self class])
+                                                          type:type_info
+                                                          text:@"离目标小于50米，提高至最高精度"];
         [manager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     }
     
