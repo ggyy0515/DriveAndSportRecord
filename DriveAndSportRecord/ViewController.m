@@ -125,7 +125,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont systemFontOfSize:12.f];
-        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.numberOfLines = 0; 
     }
     cell.textLabel.text = [_logServer.logs objectAtIndex:indexPath.row];
     return cell;
