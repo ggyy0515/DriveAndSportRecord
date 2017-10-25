@@ -22,6 +22,8 @@
 
 @property (nonatomic, readonly) FMDatabaseQueue *fmdbQueue;
 
+@property (nonatomic, strong) NSMutableArray *logs;
+
 
 /**
  *  开启日志服务

@@ -9,11 +9,13 @@
 #import "ViewController.h"
 #import "DSDriveAndSportRecord.h"
 
-@interface ViewController () <CLLocationManagerDelegate>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *longitudeTF;
 @property (weak, nonatomic) IBOutlet UITextField *LatitudeTF;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) ECLogServer *logServer;
 
 @end
 
@@ -21,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _logServer = APP_DELEGATE.logServer;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:DESLNG]) {
         _longitudeTF.text = [[[NSUserDefaults standardUserDefaults] objectForKey:DESLNG] stringValue];
         [DSDriveAndSportRecord sharedRecord].desLongitude = [[[NSUserDefaults standardUserDefaults] objectForKey:DESLNG] doubleValue];
@@ -32,9 +34,19 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_logServer addObserver:self forKeyPath:@"logs" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [_logServer removeObserver:self forKeyPath:@"logs"];
 }
 
 - (IBAction)confirmBtnAction:(UIButton *)sender {
@@ -88,6 +100,36 @@
                                                       type:type_info
                                                       text:@"车库门经纬度获取成功"];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"REQUESTCURRENTLOCATION" object:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"logs"]) {
+        [_tableView reloadData];
+        NSArray <NSIndexPath *> *arr = [_tableView indexPathsForVisibleRows];
+        [arr enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.row == _logServer.logs.count - 5) {
+                [_tableView scrollToRowAtIndexPath:obj atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                *stop = YES;
+            }
+        }];
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _logServer.logs.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont systemFontOfSize:12.f];
+        cell.textLabel.numberOfLines = 0;
+    }
+    cell.textLabel.text = [_logServer.logs objectAtIndex:indexPath.row];
+    return cell;
+    
 }
 
 /*

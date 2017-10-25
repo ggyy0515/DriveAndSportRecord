@@ -16,6 +16,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        _logs = [NSMutableArray array];
         _fmdb = nil;
         _fmdbQueue = nil;
         _state = NO;
@@ -67,7 +68,7 @@
     }
     ECLogDetailModel *model = [[ECLogDetailModel alloc] init];
     NSDateFormatter *dateFt = [[NSDateFormatter alloc] init];
-    [dateFt setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFt setDateFormat:@"yyyy-MM-dd HH:mm:ss.sss"];
     NSString *time = [dateFt stringFromDate:[NSDate date]];
     //time
     model.time = time;
@@ -82,9 +83,11 @@
     //timeStamp
     model.timeStamp = [[NSDate date] timeIntervalSince1970];
     [self insertDetailTableWithData:model];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [APP_DELEGATE showInfoInBottomWithText:text];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [APP_DELEGATE showInfoInBottomWithText:text];
+//    });
+    NSString *str = [NSString stringWithFormat:@"%@ %@", time, text];
+    [[self mutableArrayValueForKey:@"logs"] addObject:str];
 }
 
 - (void)deleteOldRecord {
